@@ -1,15 +1,6 @@
 //Libs
 import React from "react";
 import styled from "styled-components";
-import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom";
-
-//Import
-import Home from "./Home";
-
-//Image
-import iconInsta from "../assets/iconInsta.png";
-import iconLinkedIn from "../assets/iconLinkedIn.png";
-import iconFace from "../assets/iconFace.png";
 
 const Container = styled.div`
   width: 100%;
@@ -18,6 +9,10 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+
+  @media (max-width: 480px) {
+    height: 4rem;
+  }
 `;
 
 const Title = styled.h1`
@@ -26,9 +21,16 @@ const Title = styled.h1`
   font-size: 4rem;
   color: white;
 
+  @media (max-width: 480px) {
+    width: 25%;
+    height: 4rem;
+    font-size: 1.7rem;
+    font-weight: 600;
+  }
+
   :hover {
     cursor: pointer;
-    text-shadow: 7px 7px 10px #8ee5ee;
+    text-shadow: 7px 7px 10px #68228b;
     transition: text-shadow 0.5s;
   }
 `;
@@ -39,34 +41,40 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 480px) {
+    width: 60%;
+  }
 `;
 
-const ListOne = styled.ul`
+const List = styled.ul`
   width: 20rem;
   display: flex;
   justify-content: space-around;
   list-style: none;
-`;
 
-const ItemListOne = styled.li`
-  color: white;
-  text-decoration: none;
-
-  :hover {
-    cursor: pointer;
+  a {
+    text-decoration: none;
   }
 `;
 
-const ListTwo = styled.ul`
-  width: 8rem;
-  display: flex;
-  justify-content: space-around;
-  list-style: none;
-`;
+const ItemList = styled.li`
+  color: white;
+  font-size: 1.2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border: transparent solid 2px;
+  border-radius: 12px;
 
-const ImgIcon = styled.img`
-  width: 1.3rem;
-  height: 1.3rem;
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+  }
+
+  :hover {
+    cursor: pointer;
+    border-color: #68228b;
+    transition: all 0.5s;
+  }
 `;
 
 export default function Header() {
@@ -75,29 +83,20 @@ export default function Header() {
       <Title>Anna Esther</Title>
 
       <Nav>
-        <ListOne>
-          <ItemListOne>Inicio</ItemListOne>
-          <ItemListOne>ODS</ItemListOne>
-          <ItemListOne>Projetos</ItemListOne>
-        </ListOne>
-
-        <ListTwo>
-          <a href="https://www.instagram.com/">
-            <li>
-              <ImgIcon src={iconInsta} alt="Icone do Instagram" />
-            </li>
+        <List>
+          <a href="#About">
+            <ItemList>Sobre</ItemList>
           </a>
-          <a href="https://www.linkedin.com/">
-            <li>
-              <ImgIcon src={iconLinkedIn} alt="Icone do LinkedIn" />
-            </li>
+         
+          <ItemList>ODS</ItemList>
+        
+          <a href="#Projects">
+            <ItemList>Projetos</ItemList>
           </a>
-          <a href="https://www.facebook.com/">
-            <li>
-              <ImgIcon src={iconFace} alt="Icone do Facebook" />
-            </li>
+          <a href="#Footer">
+            <ItemList>Contatos</ItemList>
           </a>
-        </ListTwo>
+        </List>
       </Nav>
     </Container>
   );
