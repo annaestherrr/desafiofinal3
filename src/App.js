@@ -2,13 +2,13 @@
 import React from "react";
 import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
-
 import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom";
 
 //Components
 import Home from "./components/Home";
 import ODS from "./components/ODS";
 
+//Style
 const GlobalStyle = createGlobalStyle`
 *{
   margin:0;
@@ -38,10 +38,12 @@ const Title = styled.h1`
   color: white;
 
   @media (max-width: 480px) {
-    width: 25%;
-    height: 4rem;
-    font-size: 1.7rem;
+    width: 90%;
+    font-size: 2rem;
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   :hover {
@@ -69,8 +71,30 @@ const List = styled.ul`
   justify-content: space-around;
   list-style: none;
 
+  @media (max-width: 480px) {
+    width: 3rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+
   a {
     text-decoration: none;
+  }
+`;
+
+const ItemListODS = styled.li`
+  width: 50%;
+  color: white;
+  font-size: 1.2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border: transparent solid 2px;
+  border-radius: 12px;
+
+  :hover {
+    cursor: pointer;
+    border-color: #68228b;
+    transition: all 0.5s;
   }
 `;
 
@@ -83,7 +107,7 @@ const ItemList = styled.li`
   border-radius: 12px;
 
   @media (max-width: 480px) {
-    font-size: 0.8rem;
+    display: none;
   }
 
   :hover {
@@ -104,7 +128,7 @@ export default function App() {
               <ItemList>Sobre</ItemList>
             </a>
             <Link to="/ODS">
-              <ItemList>ODS</ItemList>
+              <ItemListODS>ODS</ItemListODS>
             </Link>
             <a href="#Projects">
               <ItemList>Projetos</ItemList>
